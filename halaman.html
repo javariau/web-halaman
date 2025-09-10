@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SejarahKu - Aplikasi Sejarah Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.7rem;
+            font-weight: 700;
+            justify-content: flex-start;
+            flex: 0 0 auto;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+            .logo-text {
+                background: linear-gradient(90deg, #6d4c1b 40%, #bfa14a 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                /* text-fill-color: transparent; */
+                font-weight: 800;
+                letter-spacing: 2px;
+            }
+    /* akhir style logo-text */
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+            .navbar-toggle {
+                display: none;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+
+            @media (max-width: 1024px) {
+                .navbar-toggle {
+                    display: block;
+                }
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 60px;
+                    right: 20px;
+                    background: var(--primary);
+                    width: 200px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+                    border-radius: 10px;
+                    padding: 20px 0;
+                    z-index: 999;
+                }
+                nav ul.active {
+                    display: flex;
+                }
+            }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0;
+            }
+            .logo {
+                justify-content: flex-start;
+            }
+            nav {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+            nav ul {
+                gap: 15px;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-end;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-register {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-register:hover {
+            background: #c0392b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-explore {
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-explore:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-img {
+            height: 180px;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .feature-content {
+            padding: 20px;
+        }
+
+        .feature-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .feature-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .feature-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .feature-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                        <img src="Cuplikan layar 2025-09-09 184324.png" alt="Logo" class="logo-img" />
+                        <span class="logo-text">TIME TRACK</span>
+            </div>
+            <nav>
+                    <button class="navbar-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Timeline</a></li>
+                        <li><a href="#">Kuis</a></li>
+                        <li><a href="#">AR</a></li>
+                        <li><a href="#">Peta</a></li>
+                        <li><a href="#">Diskusi</a></li>
+                    </ul>
+            </nav>
+            <div class="user-actions">
+                <button class="btn btn-login">Masuk</button>
+                <button class="btn btn-register">Daftar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Jelajahi Sejarah dengan Cara Interaktif</h1>
+            <p>Temukan cerita visual, timeline interaktif, kuis menarik, pengalaman augmented reality, peta sejarah lokal, dan ruang diskusi dalam satu platform.</p>
+            <button class="btn btn-explore">Jelajahi Sekarang</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan</h2>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #3498db;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Cerita Visual dan Naratif</h3>
+                        <p>Jelajahi peristiwa sejarah melalui cerita visual yang menarik dan naratif yang mendalam. Setiap cerita dilengkapi dengan gambar, ilustrasi, dan penjelasan yang informatif.</p>
+                        <a href="#" class="feature-link">Jelajahi Cerita <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #2ecc71;">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Timeline Interaktif</h3>
+                        <p>Telusuri kronologi peristiwa sejarah melalui timeline interaktif yang memudahkan Anda memahami urutan dan hubungan antara peristiwa-peristiwa bersejarah.</p>
+                        <a href="#" class="feature-link">Lihat Timeline <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #e74c3c;">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Leaderboard dan Kuis</h3>
+                        <p>Uji pengetahuan sejarah Anda dengan kuis menarik dan bersaing dengan pengguna lain di papan peringkat. Kumpulkan poin dan raih prestasi.</p>
+                        <a href="#" class="feature-link">Mulai Kuis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #9b59b6;">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Augmented Reality</h3>
+                        <p>Alami sejarah dengan teknologi AR. Lihat benda-benda bersejarah, replika, dan peristiwa muncul di dunia nyata melalui kamera perangkat Anda.</p>
+                        <a href="#" class="feature-link">Coba AR <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #f39c12;">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Peta Sejarah Lokal</h3>
+                        <p>Temukan situs bersejarah di sekitar Anda dengan peta interaktif. Pelajari tentang peristiwa yang terjadi di lokasi tertentu langsung dari peta.</p>
+                        <a href="#" class="feature-link">Buka Peta <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-color: #1abc9c;">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Ruang Diskusi dan Modul</h3>
+                        <p>Berdiskusi dengan sesama pecinta sejarah, ajukan pertanyaan, dan ikuti modul pembelajaran untuk memperdalam pengetahuan sejarah Anda.</p>
+                        <a href="#" class="feature-link">Gabung Diskusi <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SejarahKu</h3>
+                    <p>Aplikasi interaktif untuk menjelajahi dan mempelajari sejarah dengan cara yang menyenangkan dan engaging.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat dan Ketentuan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Sejarah No. 123, Jakarta</p>
+                    <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@sejarahku.app</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SejarahKu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            // Simple JavaScript for interactive elements
+            document.addEventListener('DOMContentLoaded', function() {
+                const exploreBtn = document.querySelector('.btn-explore');
+                exploreBtn.addEventListener('click', function() {
+                    alert('Selamat datang di SejarahKu! Ayo jelajahi sejarah bersama.');
+                });
+
+                const featureCards = document.querySelectorAll('.feature-card');
+                featureCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        const link = this.querySelector('.feature-link');
+                        window.location.href = link.href;
+                    });
+                });
+
+                // Navbar hamburger menu
+                const navbarToggle = document.querySelector('.navbar-toggle');
+                const navUl = document.querySelector('nav ul');
+                navbarToggle.addEventListener('click', function() {
+                    navUl.classList.toggle('active');
+                });
+
+                // Optional: close menu when clicking outside (mobile/tablet)
+                document.addEventListener('click', function(e) {
+                    if (!navbarToggle.contains(e.target) && !navUl.contains(e.target)) {
+                        navUl.classList.remove('active');
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

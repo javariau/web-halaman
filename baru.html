@@ -1,0 +1,161 @@
+baru.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login dengan Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .google {
+            background: #DB4437;
+            color: white;
+        }
+        .facebook {
+            background: #4267B2;
+            color: white;
+        }
+        .email {
+            background: #34A853;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login dengan Firebase</h2>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Masukkan email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Masukkan password">
+        </div>
+        
+        <button class="btn email" onclick="loginWithEmail()">Login dengan Email</button>
+        <button class="btn google" onclick="loginWithGoogle()">Login dengan Google</button>
+        <button class="btn facebook" onclick="loginWithFacebook()">Login dengan Facebook</button>
+        
+        <p style="text-align: center; margin-top: 20px;">
+            Belum punya akun? <a href="#" onclick="signUp()">Daftar di sini</a>
+        </p>
+    </div>
+
+    <script>
+        // Konfigurasi Firebase (Anda perlu mendapatkan ini dari Firebase Console)
+        const firebaseConfig = {
+            apiKey: "API_KEY_ANDA",
+            authDomain: "PROJECT_ID.firebaseapp.com",
+            projectId: "PROJECT_ID",
+            storageBucket: "PROJECT_ID.appspot.com",
+            messagingSenderId: "SENDER_ID",
+            appId: "APP_ID"
+        };
+        
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        function loginWithEmail() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Login berhasil
+                    const user = userCredential.user;
+                    alert('Login berhasil! Selamat datang ' + user.email);
+                })
+                .catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+        }
+        
+        function loginWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    // Login berhasil
+                    const user = result.user;
+                    alert('Login dengan Google berhasil! Selamat datang ' + user.displayName);
+                }).catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+        }
+        
+        function loginWithFacebook() {
+            const provider = new firebase.auth.FacebookAuthProvider();
+            
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    // Login berhasil
+                    const user = result.user;
+                    alert('Login dengan Facebook berhasil! Selamat datang ' + user.displayName);
+                }).catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+        }
+        
+        function signUp() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Pendaftaran berhasil
+                    const user = userCredential.user;
+                    alert('Pendaftaran berhasil! Selamat datang ' + user.email);
+                })
+                .catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+        }
+    </script>
+</body>
+</html>
