@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Sejarah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #f5f7fa; color: #333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+        .container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(44,62,80,0.12); padding: 32px; }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 32px; }
+        .cerita-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+        .cerita-card { background: #ecf0f1; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); }
+        .cerita-card h3 { margin: 0 0 10px 0; color: #e67e22; }
+        .cerita-card p { margin: 0 0 12px 0; font-size: 0.98rem; }
+        .cerita-card a { background: #3498db; color: #fff; padding: 7px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.97rem; }
+        /* Navbar Styles */
+        header { background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .header-content { max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center; }
+        .logo { display:flex;align-items:center;gap:10px;font-size:1.7rem;font-weight:700; }
+        .logo-img { height:40px;width:40px;object-fit:cover;border-radius:50%;border:2px solid #3498db;box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        .logo-text { background: linear-gradient(90deg, #6d4c1b 40%, #bfa14a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight:800; letter-spacing:2px; }
+        nav ul { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #e74c3c; }
+        .navbar-toggle { display: none; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .user-actions { display: flex; gap: 10px; }
+        .btn-login { padding:8px 16px;border-radius:50px;border:2px solid white;background:transparent;color:white;font-weight:600;text-decoration:none;transition:all 0.3s; }
+        .btn-login:hover { background: white; color: #2c3e50; }
+        .btn-register { padding:8px 16px;border-radius:50px;background:#e74c3c;color:white;font-weight:600;text-decoration:none;transition:all 0.3s; }
+        .btn-register:hover { background: #c0392b; }
+        @media (max-width: 1024px) {
+            .navbar-toggle { display: block; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; right: 20px; background: #2c3e50; width: 200px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); border-radius: 10px; padding: 20px 0; z-index: 999; }
+            nav ul.active { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="Cuplikan layar 2025-09-09 184324.png" alt="Logo" class="logo-img" />
+                <span class="logo-text">TIME TRACK</span>
+            </div>
+            <nav>
+                <button class="navbar-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="halaman.html">Beranda</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="kuis.html">Kuis</a></li>
+                    <li><a href="ar.html">AR</a></li>
+                    <li><a href="peta.html">Peta</a></li>
+                    <li><a href="diskusi.html">Diskusi</a></li>
+                    <li><a href="tokoh.html">Tokoh</a></li>
+                    <li><a href="cerita.html">Cerita</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Masuk</a>
+                <a href="register.html" class="btn-register">Daftar</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Cerita Sejarah</h1>
+        <div class="cerita-list">
+            <div class="cerita-card">
+                <h3>Peristiwa Proklamasi 17 Agustus 1945</h3>
+                <p>Proklamasi kemerdekaan Indonesia pada 17 Agustus 1945 menjadi tonggak sejarah bangsa. Soekarno dan Hatta membacakan teks proklamasi di Jalan Pegangsaan Timur 56, Jakarta.</p>
+                <a href="#">Baca Selengkapnya</a>
+            </div>
+            <div class="cerita-card">
+                <h3>Perjuangan Kartini untuk Perempuan</h3>
+                <p>Kartini memperjuangkan hak pendidikan dan kesetaraan bagi perempuan Indonesia. Surat-suratnya menjadi inspirasi gerakan emansipasi wanita.</p>
+                <a href="#">Baca Selengkapnya</a>
+            </div>
+            <div class="cerita-card">
+                <h3>Gerilya Jenderal Sudirman</h3>
+                <p>Jenderal Sudirman memimpin perang gerilya melawan Belanda meski dalam kondisi sakit, menunjukkan semangat juang luar biasa.</p>
+                <a href="#">Baca Selengkapnya</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Navbar hamburger menu responsif
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navUl = document.querySelector('nav ul');
+        navbarToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navUl.classList.toggle('active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!navbarToggle.contains(e.target) && !navUl.contains(e.target)) {
+                navUl.classList.remove('active');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

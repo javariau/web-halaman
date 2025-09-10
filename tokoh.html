@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tokoh Sejarah</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f7fa; margin: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(44,62,80,0.08); padding: 32px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .tokoh-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 32px; }
+        .tokoh-card { background: #ecf0f1; border-radius: 8px; padding: 18px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); }
+        .tokoh-card h3 { margin: 0 0 8px 0; color: #e74c3c; }
+        .tokoh-card p { margin: 0; color: #333; font-size: 0.98rem; }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+        <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:1.7rem;font-weight:700;">
+                <img src="Cuplikan layar 2025-09-09 184324.png" alt="Logo" style="height:40px;width:40px;object-fit:cover;border-radius:50%;border:2px solid #3498db;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <span style="background: linear-gradient(90deg, #6d4c1b 40%, #bfa14a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; font-weight:800; letter-spacing:2px;">TIME TRACK</span>
+            </div>
+            <nav>
+                <button class="navbar-toggle" aria-label="Toggle menu" style="display:none;background:none;border:none;color:white;font-size:2rem;cursor:pointer;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul style="display:flex;list-style:none;gap:25px;margin:0;padding:0;">
+                    <li><a href="halaman.html" style="color:white;text-decoration:none;font-weight:500;">Beranda</a></li>
+                    <li><a href="timeline.html" style="color:white;text-decoration:none;font-weight:500;">Timeline</a></li>
+                    <li><a href="kuis.html" style="color:white;text-decoration:none;font-weight:500;">Kuis</a></li>
+                    <li><a href="ar.html" style="color:white;text-decoration:none;font-weight:500;">AR</a></li>
+                    <li><a href="peta.html" style="color:white;text-decoration:none;font-weight:500;">Peta</a></li>
+                    <li><a href="diskusi.html" style="color:white;text-decoration:none;font-weight:500;">Diskusi</a></li>
+                    <li><a href="tokoh.html" style="color:white;text-decoration:none;font-weight:500;">Tokoh</a></li>
+                    <li><a href="cerita.html" style="color:white;text-decoration:none;font-weight:500;">Cerita</a></li>
+                </ul>
+            </nav>
+            <div style="display:flex;gap:10px;">
+                <a href="login.html" style="padding:8px 16px;border-radius:50px;border:2px solid white;background:transparent;color:white;font-weight:600;text-decoration:none;">Masuk</a>
+                <a href="register.html" style="padding:8px 16px;border-radius:50px;background:#e74c3c;color:white;font-weight:600;text-decoration:none;">Daftar</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Tokoh Sejarah Indonesia</h1>
+        <div class="tokoh-list">
+            <div class="tokoh-card">
+                <h3>Ir. Soekarno</h3>
+                <p>Presiden pertama Indonesia, proklamator kemerdekaan, dan tokoh penting dalam perjuangan kemerdekaan Indonesia.</p>
+                <a href="soekarno.html" class="baca-btn" style="background:#e74c3c;color:#fff;display:inline-block;padding:8px 16px;border-radius:8px;text-decoration:none;margin-top:10px;">Baca Selengkapnya</a>
+            </div>
+            <div class="tokoh-card">
+                <h3>Mohammad Hatta</h3>
+                <p>Wakil presiden pertama Indonesia, proklamator, dan pemikir ekonomi serta politik bangsa.</p>
+                <a href="hatta.html" class="baca-btn" style="background:#e74c3c;color:#fff;display:inline-block;padding:8px 16px;border-radius:8px;text-decoration:none;margin-top:10px;">Baca Selengkapnya</a>
+            </div>
+            <div class="tokoh-card">
+                <h3>R.A. Kartini</h3>
+                <p>Pahlawan emansipasi wanita Indonesia, memperjuangkan hak pendidikan dan kesetaraan perempuan.</p>
+                <a href="kartini.html" class="baca-btn" style="background:#e74c3c;color:#fff;display:inline-block;padding:8px 16px;border-radius:8px;text-decoration:none;margin-top:10px;">Baca Selengkapnya</a>
+            </div>
+            <div class="tokoh-card">
+                <h3>Jenderal Sudirman</h3>
+                <p>Panglima besar TNI, pejuang gerilya yang berperan penting dalam mempertahankan kemerdekaan Indonesia.</p>
+                <a href="sudirman.html" class="baca-btn" style="background:#e74c3c;color:#fff;display:inline-block;padding:8px 16px;border-radius:8px;text-decoration:none;margin-top:10px;">Baca Selengkapnya</a>
+            </div>
+        </div>
+</body>
+    </div>
+</body>
+</html>

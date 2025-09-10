@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -376,6 +379,11 @@
     </style>
 </head>
 <body>
+<?php if(isset($_SESSION['username'])): ?>
+    <div style="background:#2ecc71;color:#fff;padding:12px 0;text-align:center;font-size:1.2rem;">
+        Halo, <?php echo htmlspecialchars($_SESSION['username']); ?>!
+    </div>
+<?php endif; ?>
     <!-- Header -->
     <header>
         <div class="container header-content">
@@ -388,17 +396,19 @@
                         <i class="fas fa-bars"></i>
                     </button>
                     <ul>
-                        <li><a href="#">Beranda</a></li>
-                        <li><a href="#">Timeline</a></li>
-                        <li><a href="#">Kuis</a></li>
-                        <li><a href="#">AR</a></li>
-                        <li><a href="#">Peta</a></li>
-                        <li><a href="#">Diskusi</a></li>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="kuis.html">Kuis</a></li>
+                        <li><a href="ar.html">AR</a></li>
+                        <li><a href="peta.html">Peta</a></li>
+                        <li><a href="diskusi.html">Diskusi</a></li>
+                        <li><a href="cerita.html">Cerita</a></li>
+                        <li><a href="tokoh.html">Tokoh</a></li>
                     </ul>
             </nav>
             <div class="user-actions">
-                <button class="btn btn-login">Masuk</button>
-                <button class="btn btn-register">Daftar</button>
+                <a href="login.php" class="btn btn-login">Masuk</a>
+                <a href="main.html" class="btn btn-register">Daftar</a>
             </div>
         </div>
     </header>
@@ -425,7 +435,7 @@
                     <div class="feature-content">
                         <h3>Cerita Visual dan Naratif</h3>
                         <p>Jelajahi peristiwa sejarah melalui cerita visual yang menarik dan naratif yang mendalam. Setiap cerita dilengkapi dengan gambar, ilustrasi, dan penjelasan yang informatif.</p>
-                        <a href="#" class="feature-link">Jelajahi Cerita <i class="fas fa-arrow-right"></i></a>
+                        <a href="cerita.html" class="feature-link">Jelajahi Cerita <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -437,7 +447,7 @@
                     <div class="feature-content">
                         <h3>Timeline Interaktif</h3>
                         <p>Telusuri kronologi peristiwa sejarah melalui timeline interaktif yang memudahkan Anda memahami urutan dan hubungan antara peristiwa-peristiwa bersejarah.</p>
-                        <a href="#" class="feature-link">Lihat Timeline <i class="fas fa-arrow-right"></i></a>
+                        <a href="timeline.html" class="feature-link">Lihat Timeline <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -449,7 +459,7 @@
                     <div class="feature-content">
                         <h3>Leaderboard dan Kuis</h3>
                         <p>Uji pengetahuan sejarah Anda dengan kuis menarik dan bersaing dengan pengguna lain di papan peringkat. Kumpulkan poin dan raih prestasi.</p>
-                        <a href="#" class="feature-link">Mulai Kuis <i class="fas fa-arrow-right"></i></a>
+                        <a href="kuis.html" class="feature-link">Mulai Kuis <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -461,7 +471,7 @@
                     <div class="feature-content">
                         <h3>Augmented Reality</h3>
                         <p>Alami sejarah dengan teknologi AR. Lihat benda-benda bersejarah, replika, dan peristiwa muncul di dunia nyata melalui kamera perangkat Anda.</p>
-                        <a href="#" class="feature-link">Coba AR <i class="fas fa-arrow-right"></i></a>
+                        <a href="ar.html" class="feature-link">Coba AR <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -473,7 +483,7 @@
                     <div class="feature-content">
                         <h3>Peta Sejarah Lokal</h3>
                         <p>Temukan situs bersejarah di sekitar Anda dengan peta interaktif. Pelajari tentang peristiwa yang terjadi di lokasi tertentu langsung dari peta.</p>
-                        <a href="#" class="feature-link">Buka Peta <i class="fas fa-arrow-right"></i></a>
+                        <a href="peta.html" class="feature-link">Buka Peta <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -485,7 +495,7 @@
                     <div class="feature-content">
                         <h3>Ruang Diskusi dan Modul</h3>
                         <p>Berdiskusi dengan sesama pecinta sejarah, ajukan pertanyaan, dan ikuti modul pembelajaran untuk memperdalam pengetahuan sejarah Anda.</p>
-                        <a href="#" class="feature-link">Gabung Diskusi <i class="fas fa-arrow-right"></i></a>
+                        <a href="diskusi.html" class="feature-link">Gabung Diskusi <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -502,7 +512,7 @@
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/timetrack.id?utm_source=qr&igsh=N3liNmlpNTk2N2Nq"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
